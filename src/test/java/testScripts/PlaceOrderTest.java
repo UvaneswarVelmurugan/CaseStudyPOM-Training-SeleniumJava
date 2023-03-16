@@ -17,19 +17,19 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import base.TestBase;
-import pages.AddMultipleItem;
-import pages.AddSingleItem;
-import pages.DeleteItem;
+import pages.MultipleHomePage;
+import pages.SingleHomePage;
+import pages.CartPage;
 import pages.LoginPage;
-import pages.PurchaseItem;
+import pages.PurchasePage;
 
 public class PlaceOrderTest extends TestBase{
 	
 	LoginPage loginPage;
-	AddSingleItem addSingleItem;
-	AddMultipleItem addMultipleItem;
-	DeleteItem delItem;
-	PurchaseItem placeItemOrder;
+	SingleHomePage addSingleItem;
+	MultipleHomePage addMultipleItem;
+	CartPage delItem;
+	PurchasePage placeItemOrder;
 	
 	
 	@BeforeTest
@@ -52,32 +52,32 @@ public class PlaceOrderTest extends TestBase{
   
   @Test(priority=2,dataProvider="SingleItem")
   public void AddTest(String strCategories, String strItem) {
-	  addSingleItem = new AddSingleItem();
+	  addSingleItem = new SingleHomePage();
 	  addSingleItem.singleItemAdd(strCategories,strItem);
   }
   @Test(priority=3)
   public void ViewCartTest() {
-	  addSingleItem = new AddSingleItem();
+	  addSingleItem = new SingleHomePage();
 	  addSingleItem.checkSingleCart();
   }
   @Test(priority=4)
   public void DeleteCartTest() {
-	  delItem = new DeleteItem();
+	  delItem = new CartPage();
 	  delItem.delSingleItem();
   }
   @Test(priority=5,dataProvider="MultipleItem")
   public void MulAddTest(String strCategories, String strItem) {
-	  addMultipleItem = new AddMultipleItem();
+	  addMultipleItem = new MultipleHomePage();
 	  addMultipleItem.multipleItemAdd(strCategories,strItem);
   }
   @Test(priority=6)
   public void MulAddviewTest() {
-	  addMultipleItem = new AddMultipleItem();
+	  addMultipleItem = new MultipleHomePage();
 	  addMultipleItem.checkMultipleCart();
   }
   @Test(priority=7)
   public void orderCartTest() {
-	  placeItemOrder = new PurchaseItem();
+	  placeItemOrder = new PurchasePage();
 	  placeItemOrder.placeOrder();
   }
   

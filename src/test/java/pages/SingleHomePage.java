@@ -13,7 +13,7 @@ import org.testng.Assert;
 
 import base.TestBase;
 
-public class AddSingleItem extends TestBase{
+public class SingleHomePage extends TestBase{
 
 //	@FindBy(xpath="//a[contains(text(),'Phones')]")
 //	WebElement cat;
@@ -30,11 +30,11 @@ public class AddSingleItem extends TestBase{
 	@FindBy(xpath="//td[contains(text(),'Samsung galaxy s6')]")
 	WebElement cartCheckItem;
 	
-	public AddSingleItem() {
+	public SingleHomePage() {
 		PageFactory.initElements(driver, this);
 	}
 	public void singleItemAdd(String strCategories, String strItem) {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 	//	driver.navigate().to("https://www.demoblaze.com/index.html");
 		
 		WebElement cat = driver.findElement(By.linkText(strCategories));

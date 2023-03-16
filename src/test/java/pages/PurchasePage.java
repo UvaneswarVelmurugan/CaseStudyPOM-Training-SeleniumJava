@@ -9,7 +9,7 @@ import org.testng.Assert;
 
 import base.TestBase;
 
-public class PurchaseItem extends TestBase{
+public class PurchasePage extends TestBase{
 	
 	@FindBy(xpath="//button[@class='btn btn-success']")
 	WebElement placeOrderBtn;
@@ -38,7 +38,7 @@ public class PurchaseItem extends TestBase{
 	@FindBy(xpath="//h2[contains(text(),'Thank you for your purchase!')]")
 	WebElement confrmMsg;
 	
-	public PurchaseItem() {
+	public PurchasePage() {
 		PageFactory.initElements(driver, this);
 	}
 	public void placeOrder() {

@@ -12,7 +12,7 @@ import org.testng.Assert;
 
 import base.TestBase;
 
-public class DeleteItem extends TestBase {
+public class CartPage extends TestBase {
 	
 	@FindBy(xpath="//a[contains(text(),'Delete')]")
 	WebElement del;
@@ -23,7 +23,7 @@ public class DeleteItem extends TestBase {
 	@FindBy(xpath="//h3[@class='panel-title']")
 	WebElement checkRate;
 	
-	public DeleteItem() {
+	public CartPage() {
 		PageFactory.initElements(driver, this);
 	}
 	public void delSingleItem() {

@@ -13,7 +13,7 @@ import org.testng.Assert;
 
 import base.TestBase;
 
-public class AddMultipleItem extends TestBase{
+public class MultipleHomePage extends TestBase{
 	
 //	@FindBy(xpath="//a[contains(text(),'Home')]")
 //	WebElement home;
@@ -27,7 +27,7 @@ public class AddMultipleItem extends TestBase{
 	@FindBy(xpath="//td[contains(text(),'ASUS Full HD')]")
 	WebElement cartCheckItem;
 	
-	public AddMultipleItem() {
+	public MultipleHomePage() {
 		PageFactory.initElements(driver, this);
 	}
 	public void multipleItemAdd(String strCategories, String strItem) {
