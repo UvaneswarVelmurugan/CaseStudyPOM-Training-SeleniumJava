@@ -12,8 +12,6 @@ import base.TestBase;
 
 public class LoginPage extends TestBase {
 	
-	@FindBy(id="login2")
-	WebElement signInBtn;
 	
 	@FindBy(id="loginusername")
 	WebElement name;
@@ -31,7 +29,7 @@ public class LoginPage extends TestBase {
 		PageFactory.initElements(driver, this);
 	}
 	public void logIn() {
-		signInBtn.click();
+		
 		name.sendKeys("Uvaneswar");
 		pwd.sendKeys("Uvan123");
 		signInCnfrm.click();
