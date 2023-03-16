@@ -11,9 +11,6 @@ import base.TestBase;
 
 public class PurchasePage extends TestBase{
 	
-	@FindBy(xpath="//button[@class='btn btn-success']")
-	WebElement placeOrderBtn;
-	
 	@FindBy(xpath="//input[@id='name']")
 	WebElement name;
 	
@@ -42,8 +39,6 @@ public class PurchasePage extends TestBase{
 		PageFactory.initElements(driver, this);
 	}
 	public void placeOrder() {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		placeOrderBtn.click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		name.sendKeys("Uvaneswar");
 		count.sendKeys("India");

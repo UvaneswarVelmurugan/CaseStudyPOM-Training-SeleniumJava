@@ -23,6 +23,9 @@ public class CartPage extends TestBase {
 	@FindBy(xpath="//h3[@class='panel-title']")
 	WebElement checkRate;
 	
+	@FindBy(xpath="//button[@class='btn btn-success']")
+	WebElement placeOrderBtn;
+	
 	public CartPage() {
 		PageFactory.initElements(driver, this);
 	}
@@ -36,6 +39,7 @@ public class CartPage extends TestBase {
      	if(strBef!=strAft) {
 				  Assert.assertTrue(strBef!=strAft);
 			  }
+     	
     // 	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 	//	driver.navigate().to("https://www.demoblaze.com/index.html");
 		
@@ -43,6 +47,10 @@ public class CartPage extends TestBase {
 //		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
 //		wait.until(ExpectedConditions. 
 //		return new PurchaseItem();
+	}
+	public void placeOrder() {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		placeOrderBtn.click();
 	}
 
 }

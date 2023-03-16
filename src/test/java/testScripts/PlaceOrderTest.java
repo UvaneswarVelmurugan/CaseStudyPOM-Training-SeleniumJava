@@ -17,8 +17,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import base.TestBase;
-import pages.MultipleHomePage;
-import pages.SingleHomePage;
+import pages.HomePage;
 import pages.CartPage;
 import pages.LoginPage;
 import pages.PurchasePage;
@@ -26,8 +25,8 @@ import pages.PurchasePage;
 public class PlaceOrderTest extends TestBase{
 	
 	LoginPage loginPage;
-	SingleHomePage addSingleItem;
-	MultipleHomePage addMultipleItem;
+	HomePage homePage;
+	HomePage addSingleItem;
 	CartPage delItem;
 	PurchasePage placeItemOrder;
 	
@@ -37,27 +36,25 @@ public class PlaceOrderTest extends TestBase{
 		initialize();
 	}
 	
+  @Test
+  public void SignIn() {
+	  homePage = new HomePage();
+	  homePage.signIn();
+  }
   @Test(priority=1)
   public void LoginTest() {
 	  loginPage = new LoginPage();
 	  loginPage.logIn();
   }
-//	  addSingleItem = loginPage.logIn();
-//	  addSingleItem.singleItemAdd();
-//	  delItem = addSingleItem.checkSingleCart();
-////	  delItem.delSingleItem();
-//	  placeItemOrder = delItem.delSingleItem();
-//	  placeItemOrder.placeOrder();
-	 
-  
+
   @Test(priority=2,dataProvider="SingleItem")
   public void AddTest(String strCategories, String strItem) {
-	  addSingleItem = new SingleHomePage();
+	  addSingleItem = new HomePage();
 	  addSingleItem.singleItemAdd(strCategories,strItem);
   }
   @Test(priority=3)
   public void ViewCartTest() {
-	  addSingleItem = new SingleHomePage();
+	  addSingleItem = new HomePage();
 	  addSingleItem.checkSingleCart();
   }
   @Test(priority=4)
@@ -65,17 +62,22 @@ public class PlaceOrderTest extends TestBase{
 	  delItem = new CartPage();
 	  delItem.delSingleItem();
   }
-  @Test(priority=5,dataProvider="MultipleItem")
-  public void MulAddTest(String strCategories, String strItem) {
-	  addMultipleItem = new MultipleHomePage();
-	  addMultipleItem.multipleItemAdd(strCategories,strItem);
+  @Test(priority=5)
+  public void PlaceOrder() {
+	  delItem = new CartPage();
+	  delItem.placeOrder();
   }
+//  @Test(priority=5,dataProvider="MultipleItem")
+//  public void MulAddTest(String strCategories, String strItem) {
+//	  addMultipleItem = new MultipleHomePage();
+//	  addMultipleItem.multipleItemAdd(strCategories,strItem);
+//  }
+//  @Test(priority=)
+//  public void MulAddviewTest() {
+//	  addMultipleItem = new MultipleHomePage();
+//	  addMultipleItem.checkMultipleCart();
+//  }
   @Test(priority=6)
-  public void MulAddviewTest() {
-	  addMultipleItem = new MultipleHomePage();
-	  addMultipleItem.checkMultipleCart();
-  }
-  @Test(priority=7)
   public void orderCartTest() {
 	  placeItemOrder = new PurchasePage();
 	  placeItemOrder.placeOrder();
@@ -93,16 +95,16 @@ public class PlaceOrderTest extends TestBase{
   }
 	  return dataList.toArray(new Object[dataList.size()][]);
   }
-  @DataProvider(name="MultipleItem")
-  public Object[][] getData() throws CsvValidationException, IOException {
-	  String path = System.getProperty("user.dir") +"//src//test//resources//testData//multipletest.csv";
-	  String[] cols;
-	  CSVReader reader = new CSVReader(new FileReader(path));
-	  ArrayList<Object> dataList = new ArrayList<Object>();
-	  while((cols = reader.readNext()) !=null) {
-		  Object[] record = {cols[0], cols[1]};
-		  dataList.add(record);
-  }
-	  return dataList.toArray(new Object[dataList.size()][]);
-  }
+//  @DataProvider(name="MultipleItem")
+//  public Object[][] getData() throws CsvValidationException, IOException {
+//	  String path = System.getProperty("user.dir") +"//src//test//resources//testData//multipletest.csv";
+//	  String[] cols;
+//	  CSVReader reader = new CSVReader(new FileReader(path));
+//	  ArrayList<Object> dataList = new ArrayList<Object>();
+//	  while((cols = reader.readNext()) !=null) {
+//		  Object[] record = {cols[0], cols[1]};
+//		  dataList.add(record);
+//  }
+//	  return dataList.toArray(new Object[dataList.size()][]);
+//  }
 }
